@@ -7,12 +7,14 @@
 </head>
 <body>
     <form action="" method="post">
+        {% csrf_token %}
         <h1>pls signin before homepage </h1>
         <label for=""> username:</label>
         <input type="text" name="username" id="" placeholder="username"><br>
         <label for="">password:</label>
         <input type="password" name="password" id="" placeholder="password"><br>
-        <input type="submit" name="" id="" placeholder="signin">
+        <input type="submit" name="" id="" placeholder="signin"><br>
+        <a href="{% url 'register'%}"></a>
     </form>
 </body>
 </html>

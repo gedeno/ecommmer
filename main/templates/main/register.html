@@ -7,6 +7,7 @@
 </head>
 <body>
     <form action="" method="post">
+        {% csrf_token %}
         <h1> pls  signup before login </h1>
         {{from.as_p}}
         <input type="submit" name="" value="signup">
