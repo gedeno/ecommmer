@@ -19,7 +19,7 @@ def logins(request):
         password = request.POST.get('password')
         user = authenticate(request,username=Username,password=password)
         if user != None:
-            login(request.user)
+            login(request, user)
             return redirect('home')
     return render(request,'main/login.html')
 @login_required(login_url='login/')
