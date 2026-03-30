@@ -20,10 +20,16 @@ def logins(request):
         user = authenticate(request,username=Username,password=password)
         if user != None:
             login(request, user)
+            if user.is_superuser():
+                return redirect('superhome')
             return redirect('home')
     return render(request,'main/login.html')
 @login_required(login_url='login/')
 def home(request):
     return render(request,'main/home.html')
-
+def superhome(request):
+    return render(request, 'main/home.html')
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
