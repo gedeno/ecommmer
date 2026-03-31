@@ -35,7 +35,21 @@ def superhome(request):
         form = Normal_product_form(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('superhome')
     return render(request, 'main/superhome.html', {'form': form})
+
+def superphone(request,id):
+    product = Normal_product.objects.get(id = id)
+    form = Phone_product_form()
+    if request.method == 'POST':
+        form = Phone_product_form(request.POST)
+        if form.is_valid():
+            phone = form.save(commit=False)
+            phone.all_info = product
+            phone.save()
+            return redirect('superhome')
+    return render(request, 'main/superphone.html',{'form':form})
+
 def logout_view(request):
     logout(request)
     return redirect('login')

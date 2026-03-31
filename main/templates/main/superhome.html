@@ -8,6 +8,14 @@
 <body>
     <div>
         <h1>well come to super user home page </h1>
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">save</button>
+
+            </form>
+        </div>
     </div>
     
 </body>
