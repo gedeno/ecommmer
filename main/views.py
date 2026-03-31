@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login ,logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Normal_product,Phone_product,Laptop_product
+from .forms import Normal_product_form,Phone_product_form,Laptop_product_form
 
 # Create your views here.
 def registration(request):
@@ -28,7 +30,12 @@ def logins(request):
 def home(request):
     return render(request,'main/home.html')
 def superhome(request):
-    return render(request, 'main/superhome.html')
+    form = Normal_product_form()
+    if request.method == 'POST':
+        form = Normal_product_form(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'main/superhome.html', {'form': form})
 def logout_view(request):
     logout(request)
     return redirect('login')
