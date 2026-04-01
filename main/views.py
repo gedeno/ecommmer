@@ -32,10 +32,12 @@ def home(request):
 def superhome(request):
     form = Normal_product_form()
     if request.method == 'POST':
-        form = Normal_product_form(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('superhome')
+        form = Normal_product_form(request.POST, request.FILES)
+        add_info  = request.POST.get('info')
+        if add_info == 'phone':
+            if form.is_valid():
+                form.save()
+                return redirect(f'/superphone/{form.id}')
     return render(request, 'main/superhome.html', {'form': form})
 
 def superphone(request,id):
