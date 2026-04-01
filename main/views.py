@@ -38,7 +38,7 @@ def superhome(request):
             if form.is_valid():
                 valid_form = form.save()
                 return redirect(f'/superphone/{valid_form.id}')
-    elif add_info == 'laptop':
+        elif add_info == 'laptop':
             if form.is_valid():
                 valid_form = form.save()
                 return redirect(f'/superlaptop/{valid_form.id}')
@@ -67,7 +67,7 @@ def superlaptop(request,id):
             laptop.all_info = product
             laptop.save()
             return redirect('superhome')
-    return render(request, 'main/superlaptop.html')
+    return render(request, 'main/superlaptop.html',{'form':form})
 
 def logout_view(request):
     logout(request)
