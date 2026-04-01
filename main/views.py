@@ -36,8 +36,8 @@ def superhome(request):
         add_info  = request.POST.get('info')
         if add_info == 'phone':
             if form.is_valid():
-                form.save()
-                return redirect(f'/superphone/{form.id}')
+                a = form.save()
+                return redirect(f'/superphone/{a.id}')
     return render(request, 'main/superhome.html', {'form': form})
 
 def superphone(request,id):
