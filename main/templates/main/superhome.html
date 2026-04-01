@@ -13,6 +13,7 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" name="info" value="phone">phone</button>
+                <button type="submit" name="info" value="laptop">laptop</button>
                 <button type="submit">save</button>
                 <a href="{% url 'logout' %}">logout</a>
 

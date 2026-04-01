@@ -36,8 +36,13 @@ def superhome(request):
         add_info  = request.POST.get('info')
         if add_info == 'phone':
             if form.is_valid():
-                a = form.save()
-                return redirect(f'/superphone/{a.id}')
+                valid_form = form.save()
+                return redirect(f'/superphone/{valid_form.id}')
+    elif add_info == 'laptop':
+            if form.is_valid():
+                valid_form = form.save()
+                return redirect(f'/superlaptop/{valid_form.id}')
+        
     return render(request, 'main/superhome.html', {'form': form})
 
 def superphone(request,id):
@@ -51,6 +56,18 @@ def superphone(request,id):
             phone.save()
             return redirect('superhome')
     return render(request, 'main/superphone.html',{'form':form})
+
+def superlaptop(request,id):
+    product = Normal_product.objects.get(id = id )
+    form = Laptop_product_form()
+    if request.method == 'POST':
+        form = Laptop_product_form(request.POST)
+        if form.is_valid():
+            laptop = form.save(commit = False)
+            laptop.all_info = product
+            laptop.save()
+            return redirect('superhome')
+    return render(request, 'main/superlaptop.html')
 
 def logout_view(request):
     logout(request)
