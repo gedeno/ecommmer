@@ -28,7 +28,9 @@ def logins(request):
     return render(request,'main/login.html')
 @login_required(login_url='login/')
 def home(request):
-    return render(request,'main/home.html')
+    all_product = Normal_product.objects.all()
+
+    return render(request,'main/home.html',{'all_product':all_product})
 def superhome(request):
     form = Normal_product_form()
     if request.method == 'POST':
