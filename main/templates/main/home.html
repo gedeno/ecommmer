@@ -9,10 +9,10 @@
     <div>
         <h1> well come to eccomers </h1>
         {% for alls in all_product %}
+        <img src="{{alls.product_image.url}}" alt="" style=" width: 100px; height: 150px; border-radius: 20px; ">
             <h2>{{alls.product_brand}}</h2>
             <h2>{{alls.product_name}}</h2>
             <h2>{{alls.product_price}}</h2>
-            <h2>{{alls.product_image}}</h2>
         {% endfor %}
         <a href="{% url 'logout' %}">logout</a>
     </div>
