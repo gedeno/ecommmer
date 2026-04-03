@@ -30,12 +30,12 @@ def logins(request):
 def home(request):
     all_product = Normal_product.objects.all()
     return render(request,'main/home.html',{'all_product':all_product})
-def superphones(request,id):
+def phonesdetail(request,id):
     product = Phone_product.objects.get(id = id )
-    return render(request,'main/superphones.html',{'product':product})
-def superlaptops(request,id):
+    return render(request,'main/phonesdetail.html',{'product':product})
+def laptopdetail(request,id):
     product = Laptop_product.objects.get(id = id )
-    return render(request,'main/superlaptops.html',{'product':product})
+    return render(request,'main/laptopdetail.html',{'product':product})
 
 def superhome(request):
     form = Normal_product_form()

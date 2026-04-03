@@ -9,5 +9,7 @@ urlpatterns = [
     path('logout/',views.logout_view , name='logout'),
     path('superphone/<int:id>/',views.superphone , name='superphone'),
     path('superlaptop/<int:id>/',views.superlaptop,name='superlaptop'),
-    path('superphones/<int:id>/',views.superphones ,name='superphones'),
+    path('phonesdetail/<int:id>/',views.phonesdetail ,name='phonesdetail'),
+    path('laptopdetail/<int:id>/',views.laptopdetail , name='laptopdetail'),
+    
 ]
