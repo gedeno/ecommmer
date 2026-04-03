@@ -44,6 +44,10 @@ def superhome(request):
             if form.is_valid():
                 valid_form = form.save()
                 return redirect(f'/superlaptop/{valid_form.id}')
+        else:
+            if form.is_valid():
+                form.save()
+                return redirect('superhome')
         
     return render(request, 'main/superhome.html', {'form': form})
 
