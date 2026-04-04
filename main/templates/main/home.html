@@ -25,8 +25,7 @@
             <h2>{{alls.product_price}}</h2>
             {% if alls.product_name == "laptop" %} 
                 <a href="{% url 'laptopdetail' alls.id %}">laptop detail</a>
-            {% endif %}
-            {% if alls.product_name == "phone" %} 
+            {% elif alls.product_name == "phone" %} 
                 <a href="{% url 'phonesdetail' alls.id %}">phone detail</a>
             {% endif %}
         {% endfor %}
